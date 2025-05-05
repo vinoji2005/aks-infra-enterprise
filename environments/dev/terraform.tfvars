@@ -8,6 +8,7 @@ backend_resource_group  = "rg-tfstate"
 backend_storage_account = "statestoragevinoth"
 backend_container_name  = "tfstate"
 backend_key             = "aks/dev/terraform.tfstate"
+
 tags = {
   Environment = "dev"
   Owner       = "vinoth"
