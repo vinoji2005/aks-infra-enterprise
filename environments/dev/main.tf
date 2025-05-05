@@ -1,5 +1,5 @@
 module "network" {
-  source         = "../modules/vnet"
+  source         = "../../modules/vnet"
   location       = var.location
   resource_group = var.resource_group
   vnet_cidr      = var.vnet_cidr
@@ -8,7 +8,7 @@ module "network" {
 }
 
 module "aks" {
-  source           = "../modules/aks"
+  source           = "../../modules/aks"
   location         = var.location
   resource_group   = var.resource_group
   aks_name         = var.aks_name
