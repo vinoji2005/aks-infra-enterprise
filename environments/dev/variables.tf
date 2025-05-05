@@ -1,0 +1,10 @@
+variable "location" {}
+variable "resource_group" {}
+variable "aks_name" {}
+variable "dns_prefix" {}
+variable "vnet_cidr" {}
+variable "subnet_cidr" {}
+variable "backend_resource_group" {}
+variable "backend_storage_account" {}
+variable "backend_container_name" {}
+variable "backend_key" {}
