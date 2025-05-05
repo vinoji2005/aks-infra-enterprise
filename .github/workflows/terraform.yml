@@ -20,16 +20,19 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Terraform Init
+      - name: Terraform Init (from root)
         run: |
           terraform init \
             -backend-config="resource_group_name=${{ secrets.BACKEND_RG }}" \
             -backend-config="storage_account_name=${{ secrets.BACKEND_SA }}" \
             -backend-config="container_name=${{ secrets.BACKEND_CONTAINER }}" \
             -backend-config="key=${{ secrets.BACKEND_KEY }}"
+        working-directory: environments/dev
 
       - name: Terraform Plan
-        run: terraform plan -var-file="environments/dev/terraform.tfvars"
+        run: terraform plan -var-file="terraform.tfvars"
+        working-directory: environments/dev
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve -var-file="environments/dev/terraform.tfvars"
+        run: terraform apply -auto-approve -var-file="terraform.tfvars"
+        working-directory: environments/dev
