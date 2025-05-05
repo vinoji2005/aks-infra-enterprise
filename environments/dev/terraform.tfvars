@@ -11,5 +11,3 @@ tags = {
   CostCenter  = "devops"
   CreatedBy   = "terraform"
 }
-
-# File: modules/vnet/main.tf

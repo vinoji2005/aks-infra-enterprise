@@ -7,4 +7,3 @@ variable "subnet_cidr" {}
 variable "tags" {
   type = map(string)
 }
-
