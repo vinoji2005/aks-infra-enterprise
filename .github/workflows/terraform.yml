@@ -1,0 +1,28 @@
+name: Terraform Apply
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+
+      - name: Terraform Init
+        run: terraform init -backend-config="resource_group_name=${{ secrets.BACKEND_RG }}" \
+                            -backend-config="storage_account_name=${{ secrets.BACKEND_SA }}" \
+                            -backend-config="container_name=${{ secrets.BACKEND_CONTAINER }}" \
+                            -backend-config="key=${{ secrets.BACKEND_KEY }}"
+
+      - name: Terraform Plan
+        run: terraform plan -var-file="environments/dev/terraform.tfvars"
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve -var-file="environments/dev/terraform.tfvars"

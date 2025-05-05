@@ -8,3 +8,6 @@ variable "backend_resource_group" {}
 variable "backend_storage_account" {}
 variable "backend_container_name" {}
 variable "backend_key" {}
+variable "tags" {
+  type = map(string)
+}
