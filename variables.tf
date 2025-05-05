@@ -8,7 +8,3 @@ variable "tags" {
   type = map(string)
 }
 
-# File: providers.tf
-provider "azurerm" {
-  features {}
-}
